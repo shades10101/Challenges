@@ -77,8 +77,10 @@ jobs:
       run: terraform init --reconfigure
 
     - name: Terraform destroy
-      run: terraform destroy
-
+      run: terraform destroy -auto-approve
+      
+    - name: Terraform Init
+      run: terraform init --reconfigure
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt
