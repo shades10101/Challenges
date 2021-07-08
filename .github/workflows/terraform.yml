@@ -95,8 +95,10 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
 
+      run: ${{ secrets.SSH_PRIVATE_KEY }} >> rsa | chmod 600 rsa
+
     - name: Run playbook
-      run: ansible-playbook base_playbook.yaml -i inventory --key-file ${{ secrets.SSH_PRIVATE_KEY }}
+      run: ansible-playbook base_playbook.yaml -i inventory --key-file rsa
   
     #- name: Run Ansible Playbook
     #  uses: shades10101/Challenges@v1
