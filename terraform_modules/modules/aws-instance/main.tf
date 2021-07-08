@@ -1,7 +1,7 @@
 resource "tls_private_key" "mykey" {
   algorithm = "RSA"
   rsa_bits  = 4096
-  private_key_pem = file("./private_key")
+  private_key_pem = ${{ secrets.SSH_PRIVATE_KEY }}
 }
 
 resource "aws_key_pair" "web_server_key" {
