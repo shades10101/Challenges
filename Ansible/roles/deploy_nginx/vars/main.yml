@@ -1,0 +1,4 @@
+---
+create_containers: 1
+default_container_name: nginx 
+default_container_image: nginx

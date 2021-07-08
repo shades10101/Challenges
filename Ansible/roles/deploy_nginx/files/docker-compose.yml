@@ -1,0 +1,7 @@
+services:
+    nginx:
+        image: nginx
+        pull_policy: always
+        container_name: nginx
+        ports:
+            - 80:80

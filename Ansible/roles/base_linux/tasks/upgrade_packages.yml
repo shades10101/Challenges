@@ -1,0 +1,49 @@
+---
+- name: Upgrade all packages to the latest
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install the yum-utils
+  yum: 
+    name: yum-utils
+    state: present
+
+- name: Add Docker repository for CentOS 7
+  get_url:
+    url: "{{ docker_yum_repo_url }}"
+    dest: '/etc/yum.repos.d/docker-ce.repo'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install Docker Packages for CentOS 7
+  yum: 
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - docker-ce
+    - docker-ce-cli
+
+- name: Install Docker Package for RHEL 7
+  yum:
+    name:
+      - docker
+    state: present
+
+- name: Create a docker directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    mode: '0755'
+
+- name: Allow tmp to be executable for docker
+  ansible.builtin.command: sudo mount /tmp -o remount,exec
+  become: yes
+
+- name: Start docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
