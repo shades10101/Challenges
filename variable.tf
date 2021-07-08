@@ -29,4 +29,5 @@ variable "instance_type" {
 }
 variable "key_name" {
   default = "aws_terraform"
-}# 
+}
+variable "pipeline" {}
