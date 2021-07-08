@@ -96,7 +96,12 @@ jobs:
       run: terraform apply -auto-approve
   
     - name: Run Ansible Playbook
-      run: ansible-playbook base_playbook.yaml -i 35.183.129.179
+      uses: shades10101/Challenges@v1
+      with:
+        key: ${{secrets.SSH_PRIVATE_KEY}}
+        playbook: ./base_playbook.yaml
+        directory: ./
+        inventory: ./inventory
     #- name: Run playbook
     #  uses: shades10101/Challenges@v1
     #  with:
