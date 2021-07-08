@@ -97,11 +97,11 @@ jobs:
         directory: ./
         key: ${{secrets.SSH_PRIVATE_KEY}}
         inventory: |
-        [ws]
-        3.96.209.65
+            [ws]
+            3.96.209.65
 
-        [all:vars]
-        ansible_connection=ssh
-        ansible_port=22
-        ansible_become=yes
-        host_key_checking=no
+            [all:vars]
+            ansible_connection=ssh
+            ansible_port=22
+            ansible_become=yes
+            host_key_checking=no
