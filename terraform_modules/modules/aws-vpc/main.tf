@@ -54,17 +54,72 @@ resource "aws_network_acl" "pub_nacl" {
 
   #HTTP Port
   ingress {
-    rule_no    = 640
+    rule_no    = 5
     action     = "allow"
-    protocol   = "-1"
+    from_port  = 80
+    to_port    = 80
+    protocol   = "tcp"
+    cidr_block = "0.0.0.0/0"
+  }
+  #SSH
+  ingress {
+    rule_no    = 15
+    action     = "allow"
+    from_port  = 20
+    to_port    = 22
+    protocol   = "tcp"
+    cidr_block = "0.0.0.0/0"
+  }
+  #Ephemeral Ports
+  ingress {
+    rule_no    = 500
+    action     = "allow"
+    from_port  = 443
+    to_port    = 443
+    protocol   = "tcp"
+    cidr_block = "0.0.0.0/0"
+  }
+    ingress {
+    rule_no    = 501
+    action     = "allow"
+    from_port  = 1024
+    to_port    = 65535
+    protocol   = "tcp"
     cidr_block = "0.0.0.0/0"
   }
 
   #HTTP Port
   egress {
-    rule_no    = 630
+    rule_no    = 5
     action     = "allow"
-    protocol   = "-1"
+    from_port  = 80
+    to_port    = 80
+    protocol   = "tcp"
+    cidr_block = "0.0.0.0/0"
+  }
+  egress {
+    rule_no    = 15
+    action     = "allow"
+    from_port  = 20
+    to_port    = 22
+    protocol   = "tcp"
+    cidr_block = "0.0.0.0/0"
+  }
+  #Ephemeral Port
+  egress {
+    rule_no    = 400
+    action     = "allow"
+    from_port  = 1024
+    to_port    = 65535
+    protocol   = "tcp"
+    cidr_block = "0.0.0.0/0"
+  }
+    egress {
+    rule_no    = 500
+    action     = "allow"
+    from_port  = 443
+    to_port    = 443
+    protocol   = "tcp"
     cidr_block = "0.0.0.0/0"
   }
 
