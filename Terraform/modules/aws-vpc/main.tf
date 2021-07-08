@@ -1,6 +1,6 @@
 # VPC
 resource "aws_vpc" "vpc" {
-  cidr_block = var.vpc_cidr  #You can change the CIDR block as per required
+  cidr_block           = var.vpc_cidr #You can change the CIDR block as per required
   enable_dns_hostnames = true
 
   tags = {
@@ -18,9 +18,9 @@ resource "aws_internet_gateway" "igw" {
 
 # Public subnet
 resource "aws_subnet" "pub_subnet_1" {
-  vpc_id = aws_vpc.vpc.id
-  cidr_block = var.pub_cidr_1
-  availability_zone = var.availability_zone_1
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.pub_cidr_1
+  availability_zone       = var.availability_zone_1
   map_public_ip_on_launch = "true"
 
   tags = {
@@ -43,59 +43,59 @@ resource "aws_route_table" "pub_rtb" {
 }
 
 resource "aws_route_table_association" "pub_rtb_assoc_1" {
-  subnet_id = aws_subnet.pub_subnet_1.id
+  subnet_id      = aws_subnet.pub_subnet_1.id
   route_table_id = aws_route_table.pub_rtb.id
 }
 
 
 resource "aws_network_acl" "pub_nacl" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id     = aws_vpc.vpc.id
   subnet_ids = [aws_subnet.pub_subnet_1.id]
 
   #HTTP Port
   ingress {
-    rule_no = 100
-    action = "allow"
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    from_port  = 80
+    to_port    = 80
+    protocol   = "tcp"
     cidr_block = "0.0.0.0/0"
   }
   #SSH
   ingress {
-    rule_no = 100
-    action = "allow"
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    from_port  = 22
+    to_port    = 22
+    protocol   = "tcp"
     cidr_block = "0.0.0.0/0"
   }
   #Ephemeral Ports
   ingress {
-    rule_no = 400
-    action = "allow"
-    from_port = 1024
-    to_port = 65535
-    protocol = "tcp"
+    rule_no    = 400
+    action     = "allow"
+    from_port  = 1024
+    to_port    = 65535
+    protocol   = "tcp"
     cidr_block = "0.0.0.0/0"
   }
 
   #HTTP Port
   egress {
-    rule_no = 100
-    action = "allow"
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    from_port  = 80
+    to_port    = 80
+    protocol   = "tcp"
     cidr_block = "0.0.0.0/0"
   }
   #Ephemeral Port
   egress {
-    rule_no = 400
-    action = "allow"
-    from_port = 1024
-    to_port = 65535
-    protocol = "tcp"
+    rule_no    = 400
+    action     = "allow"
+    from_port  = 1024
+    to_port    = 65535
+    protocol   = "tcp"
     cidr_block = "0.0.0.0/0"
   }
 

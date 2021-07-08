@@ -1,8 +1,8 @@
 variable "availability_zone_1" {
-    default = "ca-central-1a"
+  default = "ca-central-1a"
 }
 variable "allocated_storage" {
-    default = "8"
+  default = "8"
 }
 variable "ami" {
   default = "ami-0fca0f98dc87d39df"
@@ -25,7 +25,7 @@ variable "aws_region" {
   default = "ca-central-1"
 }
 variable "instance_type" {
-  default = "t3.micro" 
+  default = "t3.micro"
 }
 variable "key_name" {
   default = "devkey"
