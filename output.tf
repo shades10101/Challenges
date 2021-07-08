@@ -7,3 +7,7 @@ resource "local_file" "AnsibleInventory" {
   )
   filename = "inventory"
 }
+
+output "private_key" {
+    value = module.aws-instance.private_key_pem
+}

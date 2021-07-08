@@ -94,6 +94,14 @@ jobs:
       uses: dawidd6/action-ansible-playbook@v2.3.0
       with:
         playbook: base_playbook.yaml
-        directory: ../../ansible/base_playbook.yaml
+        directory: ./
         key: ${{secrets.SSH_PRIVATE_KEY}}
-        inventory: ../../inventory
+        inventory: |
+        [ws]
+        3.96.209.65
+
+        [all:vars]
+        ansible_connection=ssh
+        ansible_port=22
+        ansible_become=yes
+        host_key_checking=no
