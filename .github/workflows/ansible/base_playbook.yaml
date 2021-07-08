@@ -2,5 +2,5 @@
 - hosts: ws
   roles:
     - base_linux
-    - sysctl
+    #- sysctl
     - deploy_nginx

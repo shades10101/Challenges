@@ -30,5 +30,5 @@
     verbosity: 4
 
 - name: Run docker-compose up -d
-  command: docker-compose -f /opt/nginx/docker-compose.yml up -d
+  command: /usr/local/bin/docker-compose -f /opt/nginx/docker-compose.yml up -d
   when: result.stdout | length == 0
