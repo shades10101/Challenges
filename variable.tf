@@ -5,7 +5,7 @@ variable "allocated_storage" {
   default = "8"
 }
 variable "ami" {
-  default = "ami-0fca0f98dc87d39df"
+  default = "ami-0a7c5b189b6460115"
 }
 variable "ws_irules" {
   type    = list(number)
