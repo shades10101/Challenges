@@ -17,6 +17,6 @@ resource "aws_instance" "web_server" {
   availability_zone      = var.availability_zone_1
   key_name               = aws_key_pair.web_server_key.key_name
   tags = {
-    Name = "Web Server"
+    Name = "aa-terraform-1"
   }
 }

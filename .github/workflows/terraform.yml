@@ -89,3 +89,11 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
+
+    - name: Run playbook
+      uses: dawidd6/action-ansible-playbook@v2.3.0
+      with:
+        playbook: base_playbook.yaml
+        directory: ../../ansible/base_playbook.yaml
+        key: ${{secrets.SSH_PRIVATE_KEY}}
+        inventory: ../../inventory

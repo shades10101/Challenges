@@ -1,0 +1,10 @@
+[ws]
+%{ for index, ip in linipv4_address ~}
+${ip}
+%{ endfor ~}
+
+[all:vars]
+ansible_connection=ssh
+ansible_port=22
+ansible_become=yes
+host_key_checking=no
