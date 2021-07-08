@@ -56,7 +56,7 @@ resource "aws_network_acl" "pub_nacl" {
   ingress {
     rule_no    = 640
     action     = "allow"
-    protocol   = all
+    protocol   = "-1"
     cidr_block = "0.0.0.0/0"
   }
 
@@ -64,7 +64,7 @@ resource "aws_network_acl" "pub_nacl" {
   egress {
     rule_no    = 630
     action     = "allow"
-    protocol   = all
+    protocol   = "-1"
     cidr_block = "0.0.0.0/0"
   }
 
