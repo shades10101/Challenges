@@ -41,12 +41,12 @@ module "aws-instance" {
   availability_zone_1 = var.availability_zone_1
 }
 
-resource "null_resource" "run-ansible" {
-  triggers = {
-    always_run = timestamp()
-  }
-  provisioner "local-exec" {
-    command = "ansible-playbook base_playbook.yaml -i inventory --key-file=${{secrets.SSH_PRIVATE_KEY}}"
-  }
-  depends_on = [module.aws-instance]
-}
+#resource "null_resource" "run-ansible" {
+#  triggers = {
+#    always_run = timestamp()
+#  }
+#  provisioner "local-exec" {
+#    command = "ansible-playbook base_playbook.yaml -i inventory"
+#  }
+#  depends_on = [module.aws-instance]
+#}
