@@ -8,7 +8,7 @@ variable "ami" {
   default = "ami-0fca0f98dc87d39df"
 }
 variable "ws_irules" {
-  type    = list(number) // Tells Terraform this is a list with only number values
+  type    = list(number)
   default = [80, 22]
 }
 variable "ws_erules" {
