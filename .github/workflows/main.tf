@@ -3,21 +3,17 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {
-    bucket  = "shahids-tf-state-bucket"
-    key     = "terraform.tfstate"
-    region  = "ca-central-1"
-    encrypt = true
+  backend "remote" {
+    organization = "2020-learning-shahid"
+
+    workspaces {
+      name = "acuityads_challenge"
+    }
   }
 }
 
-# Configure S3 Bucket
-data "aws_s3_bucket" "state_tf" {
-  bucket = "shahids-tf-state-bucket"
-}
-
 module "aws-vpc" {
-  source = "../modules/aws-vpc"
+  source = "../../terraform_modules/aws-vpc"
 
   aws_region          = var.aws_region
   vpc_cidr            = var.vpc_cidr
@@ -26,7 +22,7 @@ module "aws-vpc" {
 }
 
 module "aws-sg" {
-  source = "../modules/aws-sg"
+  source = "../../terraform_modules/aws-sg"
 
   ws_irules = var.ws_irules
   ws_erules = var.ws_erules
@@ -34,7 +30,7 @@ module "aws-sg" {
 }
 
 module "aws-instance" {
-  source = "../modules/aws-instance"
+  source = "../../terraform_modules/aws-instance"
 
   aws_region          = var.aws_region
   key_name            = var.key_name
