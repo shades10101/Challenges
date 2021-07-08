@@ -13,7 +13,7 @@ variable "ws_irules" {
 }
 variable "ws_erules" {
   type    = list(number)
-  default = [80, 22, 21, 20, 443]
+  default = [80, 22, 21, 20, 443 ]
 }
 variable "vpc_cidr" {
   default = "10.0.0.0/16"
