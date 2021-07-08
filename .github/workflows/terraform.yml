@@ -95,11 +95,6 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
   
-  ansible:
-    runs-on: ubuntu-latest
-    steps:
-    - name: checkout repo
-      uses: actions/checkout@v2
     - name: Run Ansible Playbook
       run: ansible-playbook base_playbook.yaml -i ${linipv4_address}
     #- name: Run playbook
