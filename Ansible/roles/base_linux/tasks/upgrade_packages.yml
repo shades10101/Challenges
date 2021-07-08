@@ -26,12 +26,6 @@
     - docker-ce
     - docker-ce-cli
 
-- name: Install Docker Package for RHEL 7
-  yum:
-    name:
-      - docker
-    state: present
-
 - name: Create a docker directory if it does not exist
   ansible.builtin.file:
     path: /etc/docker
