@@ -13,7 +13,7 @@ terraform {
 }
 
 module "aws-vpc" {
-  source = "../../terraform_modules/aws-vpc"
+  source = "terraform_modules/aws-vpc"
 
   aws_region          = var.aws_region
   vpc_cidr            = var.vpc_cidr
@@ -22,7 +22,7 @@ module "aws-vpc" {
 }
 
 module "aws-sg" {
-  source = "../../terraform_modules/aws-sg"
+  source = "terraform_modules/aws-sg"
 
   ws_irules = var.ws_irules
   ws_erules = var.ws_erules
@@ -30,7 +30,7 @@ module "aws-sg" {
 }
 
 module "aws-instance" {
-  source = "../../terraform_modules/aws-instance"
+  source = "terraform_modules/aws-instance"
 
   aws_region          = var.aws_region
   key_name            = var.key_name
