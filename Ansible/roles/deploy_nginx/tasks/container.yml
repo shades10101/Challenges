@@ -6,16 +6,16 @@
     owner: 200
 
 - name: Pull Docker image 
-     docker_image: 
-       name: "{{ default_container_image }}" 
-       source: pull
+  docker_image: 
+    name: "{{ default_container_image }}" 
+    source: pull
 
 - name: Create containers 
-     	docker_container: 
-       		name: "{{ default_container_name }}{{ item }}" 
-       		image: "{{ default_container_image }}" 
-       		state: present 
-     	with_sequence: count={{ create_containers }}
+  docker_container: 
+    name: "{{ default_container_name }}{{ item }}"
+    image: "{{ default_container_image }}" 
+    state: present 
+  with_sequence: count={{ create_containers }}
 
 - name: Copy docker-compose.yml File
   copy: src=./docker-compose.yml dest=/opt/nginx/docker-compose.yml owner=root group=root
