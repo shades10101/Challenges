@@ -1,7 +1,5 @@
 [ws]
-%{ for index, ip in linipv4_address ~}
-${ip}
-%{ endfor ~}
+${linipv4_address}
 
 [all:vars]
 ansible_connection=ssh
