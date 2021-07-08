@@ -96,7 +96,7 @@ jobs:
       run: terraform apply -auto-approve
     
     - name: Run playbook
-      uses: shades10101/Challenges@2
+      uses: shades10101/Challenges@master
       with:
         playbook: ./base_playbook.yaml
         directory: ./
