@@ -96,6 +96,7 @@ jobs:
     #  run: terraform apply -auto-approve
 #
     - name: key handle
+      uses: hashicorp/setup-terraform@v1
       with:
         cli_config_credentials_token: ${{ secrets.SSH_PRIVATE_KEY }}
       run: cat ${{ secrets.SSH_PRIVATE_KEY }} >> rsa | chmod 600 rsa
