@@ -94,53 +94,11 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
-
-name: deploy ansible
-
-on:
-  push:
-    branches:
-    - master
-  pull_request:
-    branches:
-    - master
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
     
-    - name: checkout repo
-      uses: actions/checkout@v2
-    
-    - name: Ansible Playbook
+    - name: Run playbook
       uses: shades10101/Challenges
-    with:
-        targets: ""
-  deployAnsible:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: shades10101/Challenges
-      with: 
-        playbook: base_playbook.yml
+      with:
+        playbook: ./base_playbook.yaml
+        directory: ./
+        key: ${{secrets.SSH_PRIVATE_KEY}}
         inventory: ./inventory
-
-
-    #- name: Run playbook
-    #  uses: dawidd6/action-ansible-playbook@v2.3.0
-    #  with:
-    #    playbook: ./base_playbook.yaml
-    #    directory: ./
-    #    key: ${{secrets.SSH_PRIVATE_KEY}}
-    #    inventory: |
-    #        [ws]
-    #        3.96.209.65
-#
-    #        [all:vars]
-    #        ansible_connection=ssh
-    #        ansible_port=22
-    #        ansible_become=yes
-    #        host_key_checking=no
-    #        ansible_user = centos
