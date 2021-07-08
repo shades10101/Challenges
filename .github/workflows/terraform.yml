@@ -95,13 +95,13 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
   
-    - name: Run Ansible Playbook
-      uses: shades10101/Challenges@v1
-      with:
-        key: ${{secrets.SSH_PRIVATE_KEY}}
-        playbook: ./base_playbook.yaml
-        directory: ./
-        inventory: ./inventory
+    #- name: Run Ansible Playbook
+    #  uses: shades10101/Challenges@v1
+    #  with:
+    #    key: ${{secrets.SSH_PRIVATE_KEY}}
+    #    playbook: ./base_playbook.yaml
+    #    directory: ./
+    #    inventory: ./inventory
     #- name: Run playbook
     #  uses: shades10101/Challenges@v1
     #  with:
