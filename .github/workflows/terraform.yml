@@ -76,12 +76,12 @@ jobs:
     - name: Terraform Init
       run: terraform init --reconfigure
 
-    - name: Terraform destroy
-      run: terraform destroy -auto-approve
+    #- name: Terraform destroy
+    #  run: terraform destroy -auto-approve
 
-    - name: Terraform Init
-      run: terraform init --reconfigure
-    # Checks that all Terraform configuration files adhere to a canonical format
+    #- name: Terraform Init
+    #  run: terraform init --reconfigure
+    ## Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt
 
@@ -94,7 +94,14 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
-    
+  
+  ansible:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v2
+    - name: Run Ansible Playbook
+      run: ansible-playbook base_playbook.yaml -i inventory  
     #- name: Run playbook
     #  uses: shades10101/Challenges@v1
     #  with:
