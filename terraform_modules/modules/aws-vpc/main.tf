@@ -54,7 +54,7 @@ resource "aws_network_acl" "pub_nacl" {
 
   #HTTP Port
   ingress {
-    rule_no    = 100
+    rule_no    = 10
     action     = "allow"
     from_port  = 80
     to_port    = 80
@@ -82,10 +82,18 @@ resource "aws_network_acl" "pub_nacl" {
 
   #HTTP Port
   egress {
-    rule_no    = 100
+    rule_no    = 10
     action     = "allow"
     from_port  = 80
     to_port    = 80
+    protocol   = "tcp"
+    cidr_block = "0.0.0.0/0"
+  }
+  egress {
+    rule_no    = 100
+    action     = "allow"
+    from_port  = 22
+    to_port    = 22
     protocol   = "tcp"
     cidr_block = "0.0.0.0/0"
   }
