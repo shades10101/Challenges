@@ -101,7 +101,7 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v2
     - name: Run Ansible Playbook
-      run: ansible-playbook base_playbook.yaml -i inventory  
+      run: ansible-playbook base_playbook.yaml -i ${linipv4_address}
     #- name: Run playbook
     #  uses: shades10101/Challenges@v1
     #  with:
