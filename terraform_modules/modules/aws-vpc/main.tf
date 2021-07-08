@@ -58,7 +58,7 @@ resource "aws_network_acl" "pub_nacl" {
     from_port  = 0
     to_port    = 0
     protocol   = "-1"
-    cidr_block = ["0.0.0.0/0"]
+    cidr_block = "0.0.0.0/0"
   }
   egress {
     rule_no    = 2
@@ -66,7 +66,7 @@ resource "aws_network_acl" "pub_nacl" {
     from_port  = 0
     to_port    = 0
     protocol   = "-1"
-    cidr_block = ["0.0.0.0/0"]
+    cidr_block = "0.0.0.0/0"
   }
 
   tags = {
