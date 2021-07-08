@@ -47,80 +47,26 @@ resource "aws_route_table_association" "pub_rtb_assoc_1" {
   route_table_id = aws_route_table.pub_rtb.id
 }
 
-
 resource "aws_network_acl" "pub_nacl" {
   vpc_id     = aws_vpc.vpc.id
   subnet_ids = [aws_subnet.pub_subnet_1.id]
 
   #HTTP Port
   ingress {
-    rule_no    = 5
+    rule_no    = 2
     action     = "allow"
-    from_port  = 80
-    to_port    = 80
-    protocol   = "tcp"
-    cidr_block = "0.0.0.0/0"
-  }
-  #SSH
-  ingress {
-    rule_no    = 15
-    action     = "allow"
-    from_port  = 20
-    to_port    = 22
-    protocol   = "tcp"
-    cidr_block = "0.0.0.0/0"
-  }
-  #Ephemeral Ports
-  ingress {
-    rule_no    = 500
-    action     = "allow"
-    from_port  = 443
-    to_port    = 443
-    protocol   = "tcp"
-    cidr_block = "0.0.0.0/0"
-  }
-    ingress {
-    rule_no    = 501
-    action     = "allow"
-    from_port  = 1024
-    to_port    = 65535
-    protocol   = "tcp"
-    cidr_block = "0.0.0.0/0"
-  }
-
-  #HTTP Port
-  egress {
-    rule_no    = 5
-    action     = "allow"
-    from_port  = 80
-    to_port    = 80
-    protocol   = "tcp"
-    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+    protocol   = "-1"
+    cidr_block = ["0.0.0.0/0"]
   }
   egress {
-    rule_no    = 15
+    rule_no    = 2
     action     = "allow"
-    from_port  = 20
-    to_port    = 22
-    protocol   = "tcp"
-    cidr_block = "0.0.0.0/0"
-  }
-  #Ephemeral Port
-  egress {
-    rule_no    = 400
-    action     = "allow"
-    from_port  = 1024
-    to_port    = 65535
-    protocol   = "tcp"
-    cidr_block = "0.0.0.0/0"
-  }
-    egress {
-    rule_no    = 500
-    action     = "allow"
-    from_port  = 443
-    to_port    = 443
-    protocol   = "tcp"
-    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+    protocol   = "-1"
+    cidr_block = ["0.0.0.0/0"]
   }
 
   tags = {
