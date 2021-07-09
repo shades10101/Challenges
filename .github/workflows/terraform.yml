@@ -103,12 +103,12 @@ jobs:
       with:
         playbook: base_playbook.yaml
         inventory: inventory
-        private_key: ${{secrets.SSH_PRIVATE_KEY}}
+        private_key: ${{ secrets.SSH_PRIVATE_KEY }}
         user: centos
         timeout: 600
         connection: ssh
-        become: true
+        ssh_common_args: StrictHostKeyChecking=no
         verbose: 2
       env:
-        ANSIBLE_HOST_KEY_CHECKING: 'false'
+        ANSIBLE_HOST_KEY_CHECKING: 'False'
         ANSIBLE_DEPRECATION_WARNINGS: 'false'
