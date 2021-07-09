@@ -76,11 +76,11 @@ jobs:
     - name: Terraform Init
       run: terraform init --reconfigure
 
-    - name: Terraform destroy
-      run: terraform destroy -auto-approve
+    #- name: Terraform destroy
+    #  run: terraform destroy -auto-approve
 
-    - name: Terraform Init
-      run: terraform init --reconfigure
+    #- name: Terraform Init
+    #  run: terraform init --reconfigure
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt
@@ -105,6 +105,8 @@ jobs:
         inventory: inventory
         private_key: ${{secrets.SSH_PRIVATE_KEY}}
         user: centos
+        timeout: 600
+        connection: ssh
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'false'
         ANSIBLE_DEPRECATION_WARNINGS: 'false'
