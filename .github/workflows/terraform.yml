@@ -98,8 +98,8 @@ jobs:
     - name: Play Ansible Playbook
       uses: arillso/action.playbook@master
       with:
-        playbook: ./base_playbook
-        inventory: ./inventory
+        playbook: base_playbook
+        inventory: inventory
         private_key: ${{secrets.SSH_PRIVATE_KEY}}
         user: centos
   #
