@@ -9,5 +9,4 @@
 - name: Run config file
   ansible.builtin.command: sysctl -f /etc/sysctl.d/network-tuning.conf
   become: yes
-  register: command_result
-  failed_when: "'FAILED' in command_result.stderr"
+  ignore_errors: yes
