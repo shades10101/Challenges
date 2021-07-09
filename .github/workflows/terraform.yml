@@ -107,7 +107,7 @@ jobs:
         user: centos
         timeout: 600
         connection: ssh
-        ssh_common_args: 3.96.189.184 -o UserKnownHostsFile=/dev/null #StrictHostKeyChecking=no 3.96.189.184
+        ssh_common_args: -o UserKnownHostsFile=/dev/null #StrictHostKeyChecking=no 3.96.189.184
         verbose: 2
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'False'
