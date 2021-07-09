@@ -3,8 +3,8 @@
   get_url:
     url: https://gist.githubusercontent.com/pensierinmusica/6206493/raw/973638d848adddd940bfee8888bcc8f3cc580ec5/network-tuning.conf
     dest: /etc/sysctl.d/network-tuning.conf
+    force: yes
     mode: '0740'
-    become: yes
 
 - name: Run config file
   ansible.builtin.command: sysctl -f /etc/sysctl.d/network-tuning.conf
