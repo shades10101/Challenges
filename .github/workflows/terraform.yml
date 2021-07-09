@@ -98,8 +98,8 @@ jobs:
     - name: install python
       run: sudo apt install python3
 
-    - name: Ping instance
-      run: sudo ansible all -m ping all
+    - name: Add value to hosts file
+      run: sudo echo "3.96.189.184 'ansible_user=centos'"" >> /etc/hosts
 
     - name: Play Ansible Playbook
       uses: arillso/action.playbook@master
