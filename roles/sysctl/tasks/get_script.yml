@@ -7,5 +7,9 @@
     mode: '0740'
 
 - name: Run config file
-  ansible.builtin.command: sudo sysctl -f /etc/sysctl.d/network-tuning.conf
+  ansible.builtin.command: sysctl -f /etc/sysctl.d/network-tuning.conf
   become: yes
+  register: command_result
+  failed_when: >
+    ("No such file or directory" in command_result.stdout) or
+    "'FAILED' in command_result.stderr"
