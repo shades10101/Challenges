@@ -36,3 +36,16 @@
   command: sudo /usr/local/bin/docker-compose -f /opt/nginx/docker-compose.yml up -d
   become: yes
   when: result.stdout | length == 0
+
+- name: Stop docker
+  command: systemctl stop docker
+  become: yes
+
+- name: Start docker
+  command: systemctl start docker
+  become: yes
+
+- name: Run docker-compose up -d
+  command: sudo /usr/local/bin/docker-compose -f /opt/nginx/docker-compose.yml up -d
+  become: yes
+  when: result.stdout | length == 0
