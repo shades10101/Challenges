@@ -95,6 +95,9 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
 
+    - name: install python
+      run: sudo apt-get install python-minimal -y
+
     - name: Play Ansible Playbook
       uses: arillso/action.playbook@master
       with:
