@@ -40,13 +40,3 @@ module "aws-instance" {
   ami                 = var.ami
   availability_zone_1 = var.availability_zone_1
 }
-
-resource "null_resource" "run-ansible" {
-  triggers = {
-    always_run = timestamp()
-  }
-  provisioner "local-exec" {
-    command = "cat ${var.pipeline} > id | chmod 600 id | ansible-playbook base_playbook.yaml -i inventory --key-file id"
-  }
-  depends_on = [module.aws-instance]
-}
