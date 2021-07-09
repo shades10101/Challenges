@@ -21,7 +21,7 @@
   copy: src=./docker-compose.yml dest=/opt/nginx/docker-compose.yml owner=root group=root
 
 - name: Check if service status is running
-  command: cd /opt/nginx/ && (docker-compose ps -q nginx || docker ps -q --no-trunc | grep $(docker-compose ps -q nginx))
+  command: docker-compose stop | cd /opt/nginx/ && (docker-compose ps -q nginx || docker ps -q --no-trunc | grep $(docker-compose ps -q nginx))
   register: result
 
 - name: DEBUG
