@@ -34,6 +34,7 @@
     url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Windows-x86_64.exe
     dest: /usr/local/bin/docker-compose
     mode: 'u+x,g+x'
+    become: yes
 
 - name: Add execution in case the command above fails. 
   command: sudo chmod +x /usr/local/bin/docker-compose
