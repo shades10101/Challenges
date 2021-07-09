@@ -21,7 +21,7 @@
   copy: src=./docker-compose.yml dest=/opt/nginx/docker-compose.yml owner=root group=root
 
 - name: Check if service status is running
-  command: docker-compose stop | cd /opt/nginx/ && (docker-compose ps -q nginx || docker ps -q --no-trunc | grep $(docker-compose ps -q nginx))
+  command: cd /opt/nginx/ && (docker-compose ps -q nginx || docker ps -q --no-trunc | grep $(docker-compose ps -q nginx))
   register: result
 
 - name: DEBUG
@@ -32,7 +32,7 @@
 - name: Install docker-compose
   remote_user: centos
   get_url: 
-    url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+    url : https://github.com/docker/compose/releases/download/1.29.0/docker-compose-Linux-x86_64
     dest: /usr/local/bin/docker-compose
     mode: 'u+x,g+x'
 
