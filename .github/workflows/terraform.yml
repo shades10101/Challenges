@@ -102,12 +102,12 @@ jobs:
       uses: arillso/action.playbook@master
       with:
         playbook: base_playbook.yaml
-        inventory: inventory.yaml
+        inventory: inventory
         private_key: ${{ secrets.SSH_PRIVATE_KEY }}
         user: centos
         timeout: 600
         connection: ssh
-        ssh_common_args: -o UserKnownHostsFile=/dev/null #StrictHostKeyChecking=no 3.96.189.184
+        ssh_common_args: -o UserKnownHostsFile=/dev/null #StrictHostKeyChecking=no
         verbose: 2
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'False'
