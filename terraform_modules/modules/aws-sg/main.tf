@@ -4,10 +4,9 @@ resource "aws_security_group" "web_server_sg" {
   vpc_id      = var.vpc_id
 
   ingress {
-    description      = "Ephemerial ports"
-    from_port        = 1024
-    to_port          = 65535
-    protocol         = "tcp"
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
