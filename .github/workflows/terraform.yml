@@ -107,6 +107,7 @@ jobs:
         user: centos
         timeout: 600
         connection: ssh
+        ssh_extra_args: -R $hostname
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'false'
         ANSIBLE_DEPRECATION_WARNINGS: 'false'
