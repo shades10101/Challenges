@@ -1,5 +1,5 @@
 [ws]
-35.183.129.179
+3.96.184.43
             
 [all:vars]
 ansible_connection=ssh
