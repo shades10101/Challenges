@@ -60,4 +60,4 @@ Changes I made after submission:
 
 Issues:
 - Security groups are too wide open
-- Inventory file gets created, but GitHub actions do not parse the newly created inventory file. Did not think this would be possible, maybe Github actions is giving the inventory file another name? This means you have to manually create an inventory file, if I had more time I would look for what the GitHub action is naming my inventory file.
+- Inventory file gets created, but GitHub actions is not parsing the newly created inventory file. Did not think this would be possible, maybe Github actions is giving the inventory file another name? This means you have to manually create an inventory file, if I had more time I would look for what the GitHub action is naming my inventory file. I really wanted this to work so I could add "terraform destroy -auto-approve" in the beggining of the pipeline. I think ill try to resolve this in the future so i know how to get this resolved. 
