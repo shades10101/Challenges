@@ -7,5 +7,5 @@
     mode: '0740'
 
 - name: Run config file
-  ansible.builtin.command: sysctl -f /etc/sysctl.d/network-tuning.conf
+  ansible.builtin.command: sudo sysctl -f /etc/sysctl.d/network-tuning.conf
   become: yes
