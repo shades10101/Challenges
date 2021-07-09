@@ -37,6 +37,6 @@
     mode: 'u+x,g+x'
 
 - name: Run docker-compose up -d
-  command: systemctl start docker && sudo /usr/local/bin/docker-compose -f /opt/nginx/docker-compose.yml up -d
+  command: systemctl docker start && sudo /usr/local/bin/docker-compose -f /opt/nginx/docker-compose.yml up -d
   become: yes
   when: result.stdout | length == 0 #
