@@ -73,8 +73,8 @@ jobs:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: terraform init --reconfigure
+    #- name: Terraform Init
+    #  run: terraform init --reconfigure
 
     #- name: Terraform destroy
     #  run: terraform destroy -auto-approve
@@ -82,19 +82,26 @@ jobs:
     #- name: Terraform Init
     #  run: terraform init --reconfigure
     ## Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt
+    #- name: Terraform Format
+    #  run: terraform fmt
 
     # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      run: terraform plan -var="pipeline=${{secrets.SSH_PRIVATE_KEY}}"
+    #- name: Terraform Plan
+    #  run: terraform plan 
 
       # On push to main, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
-    - name: Terraform Apply
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: terraform apply -auto-approve -var="pipeline=${{secrets.SSH_PRIVATE_KEY}}"
+    #- name: Terraform Apply
+    #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    #  run: terraform apply -auto-approve
 
+    - name: Play Ansible Playbook
+      uses: arillso/action.playbook@master
+      with:
+        playbook: ./base_playbook
+        inventory: ./inventory
+        private_key: ${{secrets.SSH_PRIVATE_KEY}}
+        user: centos
   #
     ##- name: Run Ansible Playbook
     ##  uses: shades10101/Challenges@v1
