@@ -108,7 +108,7 @@ jobs:
         timeout: 600
         connection: ssh
         become: true
-        verbose: 4
+        verbose: 2
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'false'
         ANSIBLE_DEPRECATION_WARNINGS: 'false'
