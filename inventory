@@ -1,0 +1,9 @@
+[ws]
+3.96.212.217ansible_user=centos host_key_checking=no
+            
+[all:vars]
+ansible_connection=ssh
+ansible_port=22
+ansible_become=yes
+host_key_checking=no
+ansible_user = centos

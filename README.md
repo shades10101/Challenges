@@ -32,7 +32,7 @@ https://github.com/shades10101/Terraform/tree/main/Another%203-Tier%20Architectu
 Important information:
 - Went with TF workspaces for remote backend.
 - Provided public key in the aws-instance module so I could have the private key in github actions envirnment variable.
-- Inventory file in repo will take precedence over newly created inventory, ive noticed that if there is a inventory file in the repo it will use that instead of the newly created inventory file. Havent tested from scratch but i will after writing this.
+- Inventory file in repo will take precedence over newly created inventory, ive noticed that if there is a inventory file in the repo it will use that instead of the newly created inventory file. Havent tested from scratch but i will after writing this. *UPDATE*: Does not parse the inventory file
 - Modules are stored in: terraform_modules/modules/*
 - Inventory file is created by terraform, look at module.aws-instance and /outputs.tf
 
@@ -52,3 +52,7 @@ This took me the longest to create, Terraform pipeline was quite easy but i had 
 Changes I made after submission:
 
 - For some reason I have to stop and start the docker service at the end of the playbook, then tell docker compose to start the container. Once that is done the instance can be reach at IP:80
+
+Issues:
+- Security groups are to wide open
+- Inventory file gets created, but github actions does not parse the newly created inventory file. Did not think this would be possible, maybe github actions is giving the inventory file another name?
