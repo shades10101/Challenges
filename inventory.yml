@@ -1,0 +1,25 @@
+---
+all:
+  3.96.189.184
+
+all:
+  vars:
+    # Connection via bastion host
+    ansible_ssh_common_args: >-
+        -o StrictHostKeyChecking=no
+        -o ProxyCommand="ssh -o StrictHostKeyChecking=no \
+                             -W %h:%p centos@3.96.189.184"
+
+// ..... //
+
+
+
+#[ws]
+#3.96.189.184 ansible_user=centos host_key_checking=no
+#            
+#[all:vars]
+#ansible_connection=ssh
+#ansible_port=22
+#ansible_become=yes
+#host_key_checking=no
+#ansible_user = centos

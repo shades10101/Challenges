@@ -102,7 +102,7 @@ jobs:
       uses: arillso/action.playbook@master
       with:
         playbook: base_playbook.yaml
-        inventory: inventory
+        inventory: inventory.yaml
         private_key: ${{ secrets.SSH_PRIVATE_KEY }}
         user: centos
         timeout: 600
