@@ -98,6 +98,9 @@ jobs:
     - name: install python
       run: sudo apt install python3
 
+    - name: Ping instance
+      run: sudo ansible all -m ping all
+
     - name: Play Ansible Playbook
       uses: arillso/action.playbook@master
       with:
