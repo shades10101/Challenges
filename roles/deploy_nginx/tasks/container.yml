@@ -33,13 +33,12 @@
     verbosity: 4
 
 - name: Install docker-compose
-  remote_user: centos
   get_url: 
-    url : https://github.com/docker/compose/releases/download/1.29.0/docker-compose-Linux-x86_64
+    url : "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)"
     dest: /usr/local/bin/docker-compose
     mode: 'u+x,g+x'
 
 - name: Run docker-compose up -d
-  command: sudo /usr/local/bin/docker-compose -f /opt/nginx/docker-compose.yml up -d
+  command: /usr/local/bin/docker-compose -f /opt/nginx/docker-compose.yml up -d
   become: yes
   when: result.stdout | length == 0 #
