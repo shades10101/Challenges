@@ -102,3 +102,5 @@ jobs:
         inventory: inventory
         private_key: ${{secrets.SSH_PRIVATE_KEY}}
         user: centos
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: 'false'
