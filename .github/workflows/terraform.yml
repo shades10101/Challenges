@@ -96,7 +96,7 @@ jobs:
       run: terraform apply -auto-approve
 
     - name: install python
-      run: sudo apt-get install python-minimal -y
+      run: sudo apt install python3
 
     - name: Play Ansible Playbook
       uses: arillso/action.playbook@master
@@ -107,3 +107,4 @@ jobs:
         user: centos
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'false'
+        ANSIBLE_DEPRECATION_WARNINGS: 'false'
