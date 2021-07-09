@@ -35,6 +35,9 @@
     dest: /usr/local/bin/docker-compose
     mode: 'u+x,g+x'
 
+- name: Add execution in case the command above fails. 
+  command: sudo chmod +x /usr/local/bin/docker-compose
+
 - name: Create a docker directory if it does not exist
   ansible.builtin.file:
     path: /etc/docker
