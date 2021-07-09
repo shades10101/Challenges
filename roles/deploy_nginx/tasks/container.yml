@@ -20,8 +20,8 @@
 - name: Copy docker-compose.yml File
   copy: src=./docker-compose.yml dest=/opt/nginx/docker-compose.yml owner=root group=root
 
-- name: Stop and start Docker
-  command: systemctl stop docker && systemctl start docker
+#- name: Stop and start Docker
+#  command: systemctl stop docker && systemctl start docker
 
 - name: Check if service status is running
   command: cd /opt/nginx/ && (docker-compose ps -q nginx || docker ps -q --no-trunc | grep $(docker-compose ps -q nginx))
