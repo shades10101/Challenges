@@ -98,8 +98,8 @@ jobs:
     - name: install python
       run: sudo apt install python3
 
-    #- name: Add value to hosts file
-    #  run: sudo echo "3.96.189.184 'ansible_user=centos'" >> /etc/hosts
+    - name: Add value to hosts file
+      run: sudo ansible -m ping all
 
     - name: Play Ansible Playbook
       uses: arillso/action.playbook@master
@@ -110,7 +110,7 @@ jobs:
         user: centos
         timeout: 600
         connection: ssh
-        ssh_extra_args: -R $hostname
+        ssh_extra_args: private_key=${{secrets.SSH_PRIVATE_KEY}}
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'false'
         ANSIBLE_DEPRECATION_WARNINGS: 'false'
