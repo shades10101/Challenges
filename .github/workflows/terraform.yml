@@ -98,9 +98,6 @@ jobs:
     - name: install python
       run: sudo apt install python3
 
-    - name: Add value to hosts file
-      run: sudo ansible -m ping all
-
     - name: Play Ansible Playbook
       uses: arillso/action.playbook@master
       with:
