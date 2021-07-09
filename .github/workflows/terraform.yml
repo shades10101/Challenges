@@ -107,7 +107,7 @@ jobs:
         user: centos
         timeout: 600
         connection: ssh
-        ssh_extra_args: private_key=${{secrets.SSH_PRIVATE_KEY}}
+        become: yes
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'false'
         ANSIBLE_DEPRECATION_WARNINGS: 'false'
