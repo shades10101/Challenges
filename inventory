@@ -1,5 +1,5 @@
 [ws]
-3.96.189.184 ansible_user=centos host_key_checking=no
+35.183.107.169 ansible_user=centos host_key_checking=no
             
 [all:vars]
 ansible_connection=ssh
