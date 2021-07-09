@@ -107,7 +107,8 @@ jobs:
         user: centos
         timeout: 600
         connection: ssh
-        become: yes
+        become: true
+        verbose: 4
       env:
         ANSIBLE_HOST_KEY_CHECKING: 'false'
         ANSIBLE_DEPRECATION_WARNINGS: 'false'
